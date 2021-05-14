@@ -1,0 +1,46 @@
+{
+	"membres": [
+		{
+			"id": 1,
+			"nom": "Durand",
+			"statut": "admin",
+			"credit":150.25,
+			"celibataire":true,
+			"enfants":[]
+		}, {
+			"id": 2,
+			"nom": "Jeffrey",
+			"statut": "novice",
+			"credit":0,
+			"celibataire":false,
+			"enfants":["Julie","Cécile"]
+		}, {
+			"id": 3,
+			"nom": "Mike",
+			"statut": "expert",
+			"credit":345.5,
+			"celibataire":true,
+			"enfants":["Gunter","Franz","Paulina"]
+		},
+		{
+			"id": 4,
+			"nom": "Mélissa",
+			"statut": "expert",
+			"credit":39.75,
+			"celibataire":true,
+			"enfants":[]
+		}
+	],
+	"visiteurs": [
+		{
+			"id": 1,
+			"nom": "Visiteur 1",
+			"ip": "85.159.21.10"
+		},
+		{
+			"id": 2,
+			"nom": "Visiteur 2",
+			"ip": "225.10.250.45"
+		}
+	]
+}
