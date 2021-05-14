@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<meta name ="viewport" content ="width = device-width, initial-scale 1.0">
+	<meta name="author" content="A.Gavriilidis">
+	<title>Exercice 6</title>
+</head>
+<body>
+	<h1>Exercice 6 : AJAX</h1>
+	<p>Affichage des membres du fichier <em>membres.json</em></p>
+	<div id="affichage">
+	</div>
+<script>
+// Initialisation des variables
+let xhr = new XMLHttpRequest();
+let p = document.createElement("p");
+let txt = null;
+// Requetes AJAX
+xhr.onload = function () {
+	
+	if (this.status ===200) {
+		let data = JSON.parse(this.responseText); // Objet contenant 2 tableaux : Membres et Visiteurs 
+		let membres = data.membres; // Tableau contenant des objets 
+		
+		for(let membre of membres ) {
+			//console.log(membres.length-1);
+			
+			if(membre.id != membres.length) {
+				txt = document.createTextNode(membre.nom+", ");
+				
+			} else txt = document.createTextNode("et"+ " "+ membre.nom+".");
+			
+			p.appendChild(txt);
+			
+			document.getElementById("affichage").appendChild(p);
+		}
+	}
+}
+
+xhr.open("get","membres.json",true);
+xhr.send(null);
+</script>	
+</body>
+</html>
