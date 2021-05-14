@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset = "UTF-8">
+<title>Consonne ou voyelle </title>
+</head>
+<body>
+<h1>Exercice JS : String</h1>
+</body>
+</html>
+<script>
+/*
+* 6.) Programme qui permet à l'utilisateur de choisir entre une consonne et une voyelle. 
+* Le programme affiche alors une de ces lettres au hasard.
+*
+* @author A.Gavriilidis
+* @version 0.1 10FEB21
+*/
+// Definition des variables et constantes
+let userInput;
+let nbSecret;
+const voyelleArray = new Array ();
+voyelleArray[0] = "a";
+voyelleArray[1] = "e";
+voyelleArray[2] = "i";
+voyelleArray[3] = "o";
+voyelleArray[4] = "u";
+const consonneArray = [
+	" B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Z",
+];
+// Affichage
+userInput = prompt("Consonne ou voyelle ?");
+userInput = userInput.toLowerCase();
+// Traitement de données
+if (userInput === "voyelle") {
+	nbSecret = Math.trunc(Math.random()*voyelleArray.length);
+	for(let i = 0; i<voyelleArray.length; ++i) {
+		if (nbSecret == voyelleArray.indexOf(voyelleArray[i])) {
+			console.log(voyelleArray[i]);
+		} 
+	}
+} else if (userInput === "consonne" ) {
+	nbSecret = Math.trunc(Math.random()*consonneArray.length);
+	for (let j = 0 ; j<consonneArray.length;++j) {
+		if (nbSecret == consonneArray.indexOf(consonneArray[j])) {
+			console.log(consonneArray[j]);
+		}
+	}
+}
+ 
+</script>
