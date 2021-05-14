@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<meta name ="viewport" content ="width = device-width, initial-scale 1.0">
+	<meta name="author" content="A.Gavriilidis">
+	<title>Exercice 6</title>
+	<style>
+		.container {
+			display : flex;
+			justify-content:center;
+		}
+		table{
+			border : #000 solid 2px;
+			width : 15%;
+			border-collapse: collapse;
+		}
+		thead {
+			background-color: #000;
+			color: #fff;
+		}
+		td {
+			border : #000 solid 1px;
+			border-collapse: collapse;
+			text-align:center;
+		}
+	</style>
+	<script>
+	window.onload = function () {
+		let xhr = new XMLHttpRequest();
+		let tr = null;
+		let td = null;
+		let adress = null;
+		xhr.onload = function () {
+
+			if(this.status ===200) {
+			
+				let data = JSON.parse(this.responseText); // data est un Objet
+				let visiteurs = data.visiteurs; // visiteurs est un tableau d'Objet
+				
+				for (visiteur of visiteurs) {
+				
+					tr = document.createElement("tr");
+					td = document.createElement("td");
+					adress = document.createTextNode(visiteur.ip);
+					td.appendChild(adress);
+					tr.appendChild(td);
+					document.querySelector("#adressIP").appendChild(tr);
+				}
+				
+			} else (console.log("Bad Status"));
+		}
+		xhr.open("get","membres.json",true);
+		xhr.send();
+	}
+</script>
+</head>
+<body>
+	<h1>Exercice 7 : AJAX</h1>
+	<p>Affichage l'adresse IP des visiteurs sous forme de tableau</p>
+	<div class="container">
+		<table id="adressIP">
+			<thead>
+				<th>IPv4</th>
+			</thead>
+			<tbody>
+			<!--Affichage dynamique des adresses IP -->
+			<tr>
+				<td></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>
