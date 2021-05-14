@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<dico>
+	<mot category="sport">Tennis</mot>
+	<mot category="sport">Football</mot>
+	<mot category="sport">Danse</mot>
+	<mot category="nature">Arbre</mot>
+	<mot category="nature">Feuille</mot>
+	<mot category="nature">Algue</mot>
+</dico>
