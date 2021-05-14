@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ajax</title>
+  </head>
+  <body>
+    <h1>Bienvenue</h1>
+    <h2>Code static via HTML</h2>
+    <p>On veut afficher ce résultat via AJAX</p>
+    <ul>
+      <li>Sport</li>
+      <ul>
+        <li>Tennis</li>
+        <li>Football</li>
+        <li>Danse</li>
+      </ul>
+    </ul>
+    <ul>
+      <li>Nature</li>
+      <ul>
+        <li>Arbre</li>
+        <li>Feuille</li>
+      </ul>
+    </ul>
+    <h2>Code dynamique via AJAX</h2>
+    <div id="ajax"></div>
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+          /*Affiche les données XML sous format brut et non sous forme de liste
+            let resultat = xhr.responseText;
+            const affichage = document.getElementById("ajax");
+            affichage.innerHTML = resultat;
+            */
+          const xml = xhr.responseXML; // la propriété responseXML est une propriété de lecture uniquement. Elle permet de lire le contenu d'un doc. HTML ou XML
+          let mots = xml.getElementsByTagName("mot");
+          let mot = null;
+          let categories = [];
+          let attribut = [];
+          let category = null;
+          let strListe = "<ul>";
+          const affichage = document.getElementById("ajax");
+          for (let i = 0; i < mots.length; i++) {
+            mot = mots[i].textContent; // contient le mot passé en revu
+            category = mots[i].getAttribute("category"); // contient la catégorie en cours
+            categories[i] = category;
+            if (categories[i] === "sport") {
+              if (i === 0) {
+                strListe += "<li>" + category + "</li>";
+              }
+              strListe += "<ul><li>" + mot + "</li></ul>";
+            } else {
+              if (i === 3) {
+                strListe += "<li>" + category + "</li>";
+              }
+              strListe += "<ul><li>" + mot + "</li></ul>";
+            }
+            affichage.innerHTML = strListe;
+          }
+        } else {
+          ("<p> La requête a échouée</p>");
+        }
+      };
+      xhr.open("GET", "data.xml", true);
+      xhr.send();
+    </script>
+  </body>
+</html>
